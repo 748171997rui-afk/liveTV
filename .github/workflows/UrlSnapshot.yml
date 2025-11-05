@@ -2,7 +2,7 @@ name: 'Daily Job(urlSnapshot)'
 
 on:
   schedule:
-    - cron: '00 4 * * 0'  # 每周日 4:00 (UTC) 执行
+    - cron: '00 4 * * *'  # 每日 4:00 (UTC) 执行
   workflow_dispatch:
     inputs:
       environment:
@@ -31,7 +31,7 @@ jobs:
     - name: Run Python script
       run: python assets/snapshot/snapshot.py
           
-    - name: Commit changes
+    - name: 提交更改
       run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
